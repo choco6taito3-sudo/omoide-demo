@@ -123,11 +123,16 @@ export function subscribePosts(
 ): () => void {
   const q = query(
     collection(db, "posts"),
-    where("groupId", "==", groupId),
-    orderBy("createdAt", "desc")
+    where("groupId", "==", groupId)
   );
   return onSnapshot(q, (snap: QuerySnapshot<DocumentData>) => {
-    const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() } as Post));
+    const posts = snap.docs
+      .map((d) => ({ id: d.id, ...d.data() } as Post))
+      .sort((a, b) => {
+        const at = a.createdAt?.toMillis?.() ?? 0;
+        const bt = b.createdAt?.toMillis?.() ?? 0;
+        return bt - at;
+      });
     callback(posts);
   }, () => { onError?.(); });
 }
