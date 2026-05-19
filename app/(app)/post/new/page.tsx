@@ -62,7 +62,7 @@ export default function NewPostPage() {
       await createPost({
         groupId: profile.groupId,
         authorId: user.uid,
-        authorName: profile.displayName,
+        authorName: profile.displayName ?? user.displayName ?? "ユーザー",
         imageUrls,
         caption,
       });
