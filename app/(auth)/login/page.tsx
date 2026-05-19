@@ -47,7 +47,7 @@ export default function LoginPage() {
             <Heart className="w-8 h-8 text-white fill-white" />
           </div>
           <h1 className="text-3xl font-bold text-omoide-text">Omoide</h1>
-          <p className="text-omoide-muted mt-1 text-sm">ふたりだけの思い出アルバム</p>
+          <p className="text-omoide-muted mt-1 text-sm">プライベートな世界の思い出</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm p-6 space-y-4">

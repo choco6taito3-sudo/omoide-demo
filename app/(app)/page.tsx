@@ -64,7 +64,7 @@ function EmptyState() {
       </div>
       <h2 className="text-lg font-semibold text-omoide-text mb-2">最初の思い出を投稿しよう</h2>
       <p className="text-sm text-omoide-muted mb-6">
-        大切な人と写真を共有して、ふたりだけの思い出アルバムを作りましょう
+        大切な人と写真を共有して、プライベートな世界の思い出を作りましょう
       </p>
       <Link
         href="/post/new"

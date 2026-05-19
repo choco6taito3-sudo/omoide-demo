@@ -3,7 +3,7 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
-  title: "Omoide — ふたりだけの思い出アルバム",
+  title: "Omoide — プライベートな世界の思い出",
   description: "カップルや家族が大切な瞬間を共有するプライベートな思い出アプリ",
 };
 
