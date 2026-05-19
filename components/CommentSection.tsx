@@ -28,7 +28,7 @@ export default function CommentSection({ postId }: Props) {
     try {
       await addComment(postId, {
         authorId: user.uid,
-        authorName: profile.displayName,
+        authorName: profile.displayName ?? user.displayName ?? "ユーザー",
         text: text.trim(),
       });
       setText("");
@@ -73,7 +73,7 @@ export default function CommentSection({ postId }: Props) {
         className="sticky bottom-16 bg-white border-t border-gray-100 flex items-center gap-2 px-4 py-2"
       >
         <div className="w-8 h-8 rounded-full bg-omoide-pink flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
-          {profile?.displayName.charAt(0) ?? "?"}
+          {profile?.displayName?.charAt(0) ?? "?"}
         </div>
         <input
           type="text"

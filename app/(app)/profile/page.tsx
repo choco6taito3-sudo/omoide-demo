@@ -170,7 +170,7 @@ export default function ProfilePage() {
               />
             ) : (
               <div className="w-16 h-16 rounded-full bg-omoide-coral flex items-center justify-center text-white text-2xl font-bold">
-                {profile?.displayName.charAt(0) ?? "?"}
+                {profile?.displayName?.charAt(0) ?? "?"}
               </div>
             )}
             <div className="absolute inset-0 rounded-full bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
