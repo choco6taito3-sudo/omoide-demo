@@ -118,7 +118,8 @@ export async function createPost(data: {
 
 export function subscribePosts(
   groupId: string,
-  callback: (posts: Post[]) => void
+  callback: (posts: Post[]) => void,
+  onError?: () => void
 ): () => void {
   const q = query(
     collection(db, "posts"),
@@ -128,7 +129,7 @@ export function subscribePosts(
   return onSnapshot(q, (snap: QuerySnapshot<DocumentData>) => {
     const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() } as Post));
     callback(posts);
-  });
+  }, () => { onError?.(); });
 }
 
 export async function toggleLike(postId: string, uid: string, liked: boolean) {

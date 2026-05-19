@@ -13,13 +13,17 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!profile?.groupId) return;
+    if (!profile) return;
+    if (!profile.groupId) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = subscribePosts(profile.groupId, (newPosts) => {
       setPosts(newPosts);
       setLoading(false);
-    });
+    }, () => setLoading(false));
     return unsubscribe;
-  }, [profile?.groupId]);
+  }, [profile]);
 
   return (
     <div>
