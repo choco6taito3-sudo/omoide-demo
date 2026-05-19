@@ -16,7 +16,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       router.replace("/login");
       return;
     }
-    if (user && profile && !profile.groupId) {
+    if (!profile?.groupId) {
       router.replace("/setup");
     }
   }, [user, profile, loading, router]);
