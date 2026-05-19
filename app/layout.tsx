@@ -1,10 +1,8 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import "./globals.css";
-import { AuthProvider } from "@/contexts/AuthContext";
-import { BackgroundProvider } from "@/contexts/BackgroundContext";
-import { Toaster } from "react-hot-toast";
+import dynamic from "next/dynamic";
+
+const Providers = dynamic(() => import("@/components/Providers"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Omoide — ふたりだけの思い出アルバム",
@@ -15,12 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <body>
-        <BackgroundProvider>
-          <AuthProvider>
-            {children}
-            <Toaster position="top-center" />
-          </AuthProvider>
-        </BackgroundProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
