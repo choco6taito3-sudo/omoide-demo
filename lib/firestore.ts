@@ -85,7 +85,7 @@ export async function createGroup(name: string, creatorUid: string): Promise<str
     createdBy: creatorUid,
     createdAt: serverTimestamp(),
   });
-  await updateDoc(doc(db, "users", creatorUid), { groupId: groupRef.id });
+  await setDoc(doc(db, "users", creatorUid), { groupId: groupRef.id }, { merge: true });
   return groupRef.id;
 }
 
@@ -95,7 +95,7 @@ export async function joinGroup(inviteCode: string, uid: string): Promise<string
   if (snap.empty) return null;
   const groupDoc = snap.docs[0];
   await updateDoc(groupDoc.ref, { members: arrayUnion(uid) });
-  await updateDoc(doc(db, "users", uid), { groupId: groupDoc.id });
+  await setDoc(doc(db, "users", uid), { groupId: groupDoc.id }, { merge: true });
   return groupDoc.id;
 }
 
